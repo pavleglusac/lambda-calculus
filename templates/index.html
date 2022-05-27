@@ -56,7 +56,7 @@
                     {% endfor %}
                 </div>
                 <div class="w-100 h-100">
-                    <div id="carouselExampleControls" class="carousel slide h-100 mb-5" data-bs-ride="carousel">
+                    <div id="carouselExampleControls" class="carousel slide h-100 mb-5" data-bs-ride="carousel" data-interval="false">
                         <div class="carousel-inner text-center">
                         {% for ind in range(expressions|length)%}
                             <div class="carousel-item {% if ind == 0 %} active {% endif %}">
