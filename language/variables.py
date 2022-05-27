@@ -1,5 +1,5 @@
 from typing import overload
-from nodes import Abstraction, Application, Variable, Expression
+from language.nodes import Abstraction, Application, Variable, Expression
 from multipledispatch import dispatch
 
 

@@ -1,0 +1,44 @@
+
+    digraph textX {
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    node[
+        shape=record,
+        style=filled,
+        fillcolor=aliceblue
+    ]
+    nodesep = 0.3
+    edge[dir=black,arrowtail=empty]
+
+
+1953380974112 -> 1953380974160 [label="left" arrowtail=diamond dir=both]
+1953380974160 -> 1953380794432 [label="parameter" arrowtail=diamond dir=both]
+1953380794432[label="{s:Variable|}"]
+1953380974160 -> 1953379349408 [label="expression" arrowtail=diamond dir=both]
+1953379349408 -> 1953379351760 [label="parameter" arrowtail=diamond dir=both]
+1953379351760[label="{t:Variable|}"]
+1953379349408 -> 1953379352144 [label="expression" arrowtail=diamond dir=both]
+1953379352144 -> 1953379349312 [label="parameter" arrowtail=diamond dir=both]
+1953379349312[label="{f:Variable|}"]
+1953379352144 -> 1953379352240 [label="expression" arrowtail=diamond dir=both]
+1953379352240[label="{t:Variable|}"]
+1953379352144[label="{:Abstraction|}"]
+1953379349408[label="{:Abstraction|}"]
+1953380974160[label="{:Abstraction|}"]
+1953380974112 -> 1953380804224 [label="right" arrowtail=diamond dir=both]
+1953380804224 -> 1953380804272 [label="parameter" arrowtail=diamond dir=both]
+1953380804272[label="{x:Variable|}"]
+1953380804224 -> 1953380794480 [label="expression" arrowtail=diamond dir=both]
+1953380794480 -> 1953380843728 [label="parameter" arrowtail=diamond dir=both]
+1953380843728[label="{t:Variable|}"]
+1953380794480 -> 1953380844304 [label="expression" arrowtail=diamond dir=both]
+1953380844304 -> 1953380844352 [label="parameter" arrowtail=diamond dir=both]
+1953380844352[label="{f:Variable|}"]
+1953380844304 -> 1953380843632 [label="expression" arrowtail=diamond dir=both]
+1953380843632[label="{f:Variable|}"]
+1953380844304[label="{:Abstraction|}"]
+1953380794480[label="{:Abstraction|}"]
+1953380804224[label="{:Abstraction|}"]
+1953380974112[label="{:Application|}"]
+
+}

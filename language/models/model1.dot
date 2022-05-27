@@ -1,0 +1,52 @@
+
+    digraph textX {
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    node[
+        shape=record,
+        style=filled,
+        fillcolor=aliceblue
+    ]
+    nodesep = 0.3
+    edge[dir=black,arrowtail=empty]
+
+
+1953379349504 -> 1953379349552 [label="left" arrowtail=diamond dir=both]
+1953379349552 -> 1953379351376 [label="left" arrowtail=diamond dir=both]
+1953379351376 -> 1953379351472 [label="parameter" arrowtail=diamond dir=both]
+1953379351472[label="{z:Variable|}"]
+1953379351376 -> 1953379352000 [label="expression" arrowtail=diamond dir=both]
+1953379352000 -> 1953379344608 [label="parameter" arrowtail=diamond dir=both]
+1953379344608[label="{s:Variable|}"]
+1953379352000 -> 1953379344656 [label="expression" arrowtail=diamond dir=both]
+1953379344656[label="{z:Variable|}"]
+1953379352000[label="{:Abstraction|}"]
+1953379351376[label="{:Abstraction|}"]
+1953379349552 -> 1953379349408 [label="right" arrowtail=diamond dir=both]
+1953379349408 -> 1953379351760 [label="parameter" arrowtail=diamond dir=both]
+1953379351760[label="{t:Variable|}"]
+1953379349408 -> 1953379352144 [label="expression" arrowtail=diamond dir=both]
+1953379352144 -> 1953379349312 [label="parameter" arrowtail=diamond dir=both]
+1953379349312[label="{f:Variable|}"]
+1953379352144 -> 1953379352240 [label="expression" arrowtail=diamond dir=both]
+1953379352240[label="{t:Variable|}"]
+1953379352144[label="{:Abstraction|}"]
+1953379349408[label="{:Abstraction|}"]
+1953379349552[label="{:Application|}"]
+1953379349504 -> 1953379352192 [label="right" arrowtail=diamond dir=both]
+1953379352192 -> 1953379349792 [label="parameter" arrowtail=diamond dir=both]
+1953379349792[label="{x:Variable|}"]
+1953379352192 -> 1953379349456 [label="expression" arrowtail=diamond dir=both]
+1953379349456 -> 1953379344272 [label="parameter" arrowtail=diamond dir=both]
+1953379344272[label="{t:Variable|}"]
+1953379349456 -> 1953379352096 [label="expression" arrowtail=diamond dir=both]
+1953379352096 -> 1953379345040 [label="parameter" arrowtail=diamond dir=both]
+1953379345040[label="{f:Variable|}"]
+1953379352096 -> 1953379352048 [label="expression" arrowtail=diamond dir=both]
+1953379352048[label="{f:Variable|}"]
+1953379352096[label="{:Abstraction|}"]
+1953379349456[label="{:Abstraction|}"]
+1953379352192[label="{:Abstraction|}"]
+1953379349504[label="{:Application|}"]
+
+}

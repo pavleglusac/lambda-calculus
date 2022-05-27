@@ -17,7 +17,7 @@
     </style>
 </head>
 <body>
-    <div class="d-flex justify-content-center align-items-start shadow" style="height: 100vh;">
+    <div class="d-flex justify-content-center align-items-start shadow">
         
         <div class="card d-flex flex-row shadow justify-content-center w-75 align-items-start h-75 mt-1 p-0" >
             
@@ -45,27 +45,49 @@
                 <div class="d-flex justify-content-center text-center mt-5">
                     <img class="align-self-start" src="/static/lambda.png" style="width: 10vw;">
                 </div>
-                <div class="d-flex justify-content-center mb-3">
-                    <input type="text" id="expressionInput" class="form-control form-rounded w-50" placeholder="Enter an expression">
-                </div>
-                <div class="d-flex flex-column align-items-center">
+                <form id="inputForm" class="w-100" action="{{ url_for('evaluate') }}" method="post">
+                    <div class="d-flex justify-content-center mb-3">
+                        <input type="text" id="expressionInput" name="expression" class="form-control form-rounded w-50" placeholder="Enter an expression">
+                    </div>
+                </form>
+                <div class="d-flex flex-column align-items-center mb-5">
                     {% for expression in expressions %}
-                        <p class="lead">{{expression}}</p>
+                        <p class="lead mb-1">{{expression}}</p>
                     {% endfor %}
                 </div>
+                <div class="w-100 h-100">
+                    <div id="carouselExampleControls" class="carousel slide h-100 mb-5" data-bs-ride="carousel">
+                        <div class="carousel-inner text-center">
+                        {% for ind in range(expressions|length)%}
+                            <div class="carousel-item {% if ind == 0 %} active {% endif %}">
+                                <p>{{expressions[ind]}}</p>
+                                <object class="svg"  data="/static/model{{ind}}.svg"  style="height: 75vh;"></object>
+                            </div>
+                        {% endfor %}
+                        </div>
+                        <button class="carousel-control-prev bg-dark" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next bg-dark" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+                
 
-                <div class="mb-5"></div>
             </div>
         </div>
     </div>
 </body>
 <script>
-    var input = document.getElementById("expressionInput");
+    var input = document.getElementById('expressionInput');
 
-    input.addEventListener("keypress", function(event) {  
-    if (event.key === "Enter") {
+    input.addEventListener('keypress', function(event) {  
+    if (event.key === 'Enter') {
         event.preventDefault();
-        window.alert(input.value);
+        document.getElementById('inputForm').submit();
     }
 }); 
 </script>

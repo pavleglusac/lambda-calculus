@@ -11,21 +11,22 @@
     edge[dir=black,arrowtail=empty]
 
 
-2202098551120[ label="{*Expression|}"]
+2128880613088[ label="{*Expression|}"]
 
-2202098528080[ label="{Abstraction|parameter: ID\l}"]
+2128880614048[ label="{Variable|name: ID\l}"]
 
-2202098554960[ label="{Variable|name: ID\l}"]
+2128880620768[ label="{Abstraction|}"]
 
-2202098523280[ label="{Application|}"]
+2128880645728[ label="{Application|}"]
 
 
 
-2202098551120 -> 2202098528080 [dir=back]
-2202098551120 -> 2202098554960 [dir=back]
-2202098551120 -> 2202098523280 [dir=back]
-2202098528080 -> 2202098551120[arrowtail=diamond, dir=both, headlabel="expression "]
-2202098523280 -> 2202098551120[arrowtail=diamond, dir=both, headlabel="left "]
-2202098523280 -> 2202098551120[arrowtail=diamond, dir=both, headlabel="right "]
+2128880613088 -> 2128880620768 [dir=back]
+2128880613088 -> 2128880614048 [dir=back]
+2128880613088 -> 2128880645728 [dir=back]
+2128880620768 -> 2128880614048[arrowtail=diamond, dir=both, headlabel="parameter "]
+2128880620768 -> 2128880613088[arrowtail=diamond, dir=both, headlabel="expression "]
+2128880645728 -> 2128880613088[arrowtail=diamond, dir=both, headlabel="left "]
+2128880645728 -> 2128880613088[arrowtail=diamond, dir=both, headlabel="right "]
 
 }

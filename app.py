@@ -1,9 +1,10 @@
-from flask import Flask, render_template
+from flask import Flask, redirect, render_template, request, url_for
 from livereload import Server
+from language.lambda_evaluator import interpret
 
 app = Flask(__name__)
 
-sample_evaluation = [
+evaluation = [
     '(λx. t (x x)) (λx. t (x x))',
     't ((λx. t (x x)) (λx. t (x x)))',
     't (Y t) '
@@ -14,9 +15,18 @@ app.config.update(
     TEMPLATES_AUTO_RELOAD=True
 )
 
+@app.route('/index')
 @app.route("/")
 def index():
-    return render_template('index.html', expressions=sample_evaluation)
+    return render_template('index.html', expressions=evaluation)
+
+@app.route("/evaluate", methods=['POST'])
+def evaluate():
+    global evaluation
+    expression = request.form['expression']
+    evaluation = interpret(expression)
+    return redirect(url_for('index'))
+
 
 @app.route("/about")
 def about():
@@ -24,6 +34,4 @@ def about():
 
     
 if __name__ == '__main__':
-    server = Server(app.wsgi_app)
-    server.serve()
-
+    app.run()
