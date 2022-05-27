@@ -1,0 +1,18 @@
+
+    digraph textX {
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    node[
+        shape=record,
+        style=filled,
+        fillcolor=aliceblue
+    ]
+    nodesep = 0.3
+    edge[dir=black,arrowtail=empty]
+
+
+2202132421200 -> 2202132421296 [label="expression" arrowtail=diamond dir=both]
+2202132421296[label="{X:Variable|}"]
+2202132421200[label="{:Abstraction|+parameter:str='X'\l}"]
+
+}
