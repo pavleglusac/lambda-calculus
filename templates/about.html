@@ -17,7 +17,7 @@
     </style>
 </head>
 <body>
-    <div class="d-flex justify-content-center align-items-start shadow" style="height: 100vh;">
+    <div class="d-flex justify-content-center align-items-start shadow">
         
         <div class="card d-flex flex-row shadow justify-content-center w-75 align-items-start h-75 mt-1 p-0" >
             
@@ -43,8 +43,146 @@
                     </div>
                 </nav>
                 
-                <div class="d-flex justify-content-center text-center mt-5">
-                    About page
+                <div class="d-flex justify-content-center mt-2">
+                  <div class="d-flex flex-column justify-content-start align-content-start mt-3 mb-5 border-bottom" style="width: 67vw;">
+                    <h3>What is lambda calculus?</h3>
+                    <p class="">Lambda calculus is a formal mathematical system for describing function.
+                      Lambda calculus can only describe functions and their applications. That's it. Using such
+                      basic concepts, it's possible to write <strong>any</strong> program, just like with 
+                      a regular programming language. It is also called 'the assembly of functional languages'. Lambda calculus is equivalent to the Turing machine,
+                      which is proven by <a href="https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis">the Church-Turing thesis</a>.
+                    </p>
+                    <br>
+                    <p>
+                      Functional programming languages like Haskell are based on LC. In fact, Haskell is written based on
+                      System F (second-order lambda calculus). Functional programming languages are immutable, efficient, and more 'bug-free'
+                      than the regular imperative programming languages.
+                    </p>
+
+                    <h3>Notation</h3>
+                    <p>
+                      The symbol λ is used to denote the start of a function definition. For example:
+                    </p>
+                    <p class="lead align-self-center">λx.x</p>
+                    <p>
+                      This is a function definition. It takes one parameter, x. The dot represents beginning of the
+                      function body. The aforementioned function takes in one parameter, x, and evaluates to that
+                      parameter.
+                    </p>
+
+                    <h3>Grammar and evaluation</h3>
+                    <p>
+                      The grammer that describes lambda calculus is fairly simple.
+                    </p>
+                    <p class="lead align-self-center">
+                      Expression  ::= Variable | Application | Abstraction <br>
+                      Variable    ::= ID <br>
+                      Application ::= (Expression Expression) <br>
+                      Abstraction ::= λID.Expression <br>
+                    </p>
+
+                    <p>
+                      In this evaluator, a Python tool called <a href="http://textx.github.io/textX/3.0/">textX</a> is used
+                      for parsing and creating the AST. The grammar we define in textX generates all the necessary classes, shown
+                      in the metamodel represented below.
+                    </p>
+                    <object class="svg"  data="/static/metamodel.svg"  style="height: 50vh;"></object>
+                    
+                    <h4>β-reduction</h4>
+                    <p>β-reduction is a computational step in our language. It's a rule that
+                      tells us how to evaluate our functions. It subtitutes the function parameter with
+                      the appropriate expression. Let's say, to reduce (λn.n × 2) 7, we have:
+                    </p>
+                    <p class="lead align-self-center">(λn.n × 2) 7</p>
+                    <p class="lead align-self-center">(λ7.7 × 2)</p>
+                    <p class="lead align-self-center">(7 × 2)</p>
+                    <p class="lead align-self-center">14</p>
+
+                    <h4>Free and bound variables</h4>
+                    <p>
+                      Each appearance of a variable is either free to λ or bound to λ.
+                      β-reduction can replace the bound variables once parameters are applied, but not the free variables.
+                    </p>
+
+                    <img class="lead align-self-center" src="https://www.tutorialspoint.com/functional_programming/images/bound_variables.jpg" alt="">
+
+                    <h4>α-conversion</h4>
+                    <p>
+                      α-conversion is a process of changing bound variables' names.  For example, α-conversion of λx.x might yield λy.y.
+                      This is not a trivial process, because the varaible names must be carefully chosen so that they don't shadow
+                      other names. The best way to solve this problem is using the <a href="">De Brujin index</a> for name resolution.
+                      It guarantees that any two α-equivalent terms are syntactically identical.
+                    </p>
+
+                    <h3>Church encoding</h3>
+                    <p>
+                      Naturally, one of the first problems of lambda calculus is finding a way to represent data.
+                      All the data types that programmers are used to are represented with a function. This is done
+                      by Church encoding, which is shown below.
+                    </p>
+
+                    <h4>
+                      Numbers
+                    </h4>
+                    <p>Number representation via functions looks like this:</p>
+                    <p class="lead text-center">
+                      0 := λf.λx.x
+                    </p>
+                    <p class="lead text-center">
+                      1 := λf.λx.f x
+                    </p>
+                    <p class="lead text-center">
+                      2 := λf.λx.f (f x)
+                    </p>
+                    <p class="lead text-center">
+                      3 := λf.λx.f (f (f x))
+                    </p>
+                    <p>and so on. Successor function can be used to get the same effect:</p>
+                    <p class="lead text-center">
+                      SUCC := λn.λf.λx.f (n f x)
+                    </p>
+                    <p>Using that, we can easily define addition. We just need to apply succession the
+                      required number of times.
+                    </p>
+                    <p class="lead text-center">
+                      PLUS := λm.λn.λf.λx.m f (n f x)
+                    </p>
+                    <p>
+                      Thus, we can define multiplication like adding the same parameter m times to zero:
+                    </p>
+                    <p class="lead text-center">
+                      MULT := λm.λn.m (PLUS n) 0
+                    </p>
+                    <p>
+                      and so on. Using the previous abstractions we can build more algebraic functions.
+                    </p>
+
+                    <h4>
+                      Logic
+                    </h4>
+                    <p>
+                      To define any logical operator we first must define boolean values True and False.
+                    </p>
+                    <p class="lead text-center">
+                      TRUE := λx.λy.x
+                    </p>
+                    <p class="lead text-center">
+                      FALSE := λx.λy.y
+                    </p>
+                    <p>
+                      Using that, we can define the standard logic operators like:
+                    </p>
+                    <p class="lead text-center">
+                      AND := λp.λq.p q p
+                    </p>
+                    <p class="lead text-center">
+                      OR := λp.λq.p p q
+                    </p>
+                    <p class="lead text-center">
+                      NOT := λp.p FALSE TRUE
+                    </p>
+                  </div>
+
                 </div>
 
                 <div class="mb-5"></div>

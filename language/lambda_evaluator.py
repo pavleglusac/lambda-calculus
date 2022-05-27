@@ -12,6 +12,9 @@ import pydot
 
 lambda_meta = metamodel_from_file('./language/lambda.tx', classes=[Expression, Abstraction, Application, Variable])
 metamodel_export(lambda_meta, 'metamodel.dot')
+graphs = pydot.graph_from_dot_file('metamodel.dot')
+graph = graphs[0]
+graph.write_svg('./static/metamodel.svg')
 
 MAX_ITERATIONS = 100
 
