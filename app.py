@@ -5,6 +5,8 @@ from language.lambda_evaluator import interpret
 import uuid
 import datetime
 import shutil
+from flask import send_from_directory
+
 
 app = Flask(__name__)
 app.secret_key = 'lambda calculus secret key'
@@ -22,6 +24,11 @@ app.config.update(
     TESTING=True,
     TEMPLATES_AUTO_RELOAD=True
 )
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 @app.route('/index')
 @app.route("/")
