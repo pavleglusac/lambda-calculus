@@ -47,7 +47,7 @@
                 <div class="d-flex justify-content-center mt-2">
                   <div class="d-flex flex-column justify-content-start align-content-start mt-3 mb-5 border-bottom" style="width: 67vw;">
                     <h3>What is lambda calculus?</h3>
-                    <p class="">Lambda calculus is a formal mathematical system for describing function.
+                    <p class="">Lambda calculus is a formal mathematical system for describing functions.
                       Lambda calculus can only describe functions and their applications. That's it. Using such
                       basic concepts, it's possible to write <strong>any</strong> program, just like with 
                       a regular programming language. It is also called 'the assembly of functional languages'. Lambda calculus is equivalent to the Turing machine,
@@ -66,7 +66,7 @@
                     </p>
                     <p class="lead align-self-center">λx.x</p>
                     <p>
-                      This is a function definition. It takes one parameter, x. The dot represents beginning of the
+                      This is a function definition. It takes one parameter, x. The dot represents the beginning of the
                       function body. The aforementioned function takes in one parameter, x, and evaluates to that
                       parameter.
                     </p>
@@ -91,7 +91,7 @@
                     
                     <h4>β-reduction</h4>
                     <p>β-reduction is a computational step in our language. It's a rule that
-                      tells us how to evaluate our functions. It subtitutes the function parameter with
+                      tells us how to evaluate our functions. It substitutes the function parameter with
                       the appropriate expression. Let's say, to reduce (λn.n × 2) 7, we have:
                     </p>
                     <p class="lead align-self-center">(λn.n × 2) 7</p>
@@ -110,8 +110,8 @@
                     <h4>α-conversion</h4>
                     <p>
                       α-conversion is a process of changing bound variables' names.  For example, α-conversion of λx.x might yield λy.y.
-                      This is not a trivial process, because the varaible names must be carefully chosen so that they don't shadow
-                      other names. The best way to solve this problem is using the <a href="">De Brujin index</a> for name resolution.
+                      This is not a trivial process, because the variable names must be carefully chosen so that they don't shadow
+                      other names. The best way to solve this problem is to use the <a href="">De Bruijn index</a> for name resolution.
                       It guarantees that any two α-equivalent terms are syntactically identical.
                     </p>
 
@@ -149,7 +149,7 @@
                       PLUS := λm.λn.λf.λx.m f (n f x)
                     </p>
                     <p>
-                      Thus, we can define multiplication like adding the same parameter m times to zero:
+                      Thus, we can define multiplication as adding the same parameter m times to zero:
                     </p>
                     <p class="lead text-center">
                       MULT := λm.λn.m (PLUS n) 0
