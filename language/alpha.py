@@ -67,7 +67,7 @@ def generate_next_variable_name(unavailable_names):
             return word
 
 def nextWord(s):
-    if (s == " "):
+    if s == " ":
         return "a"
 
     ind = -1
@@ -81,4 +81,7 @@ def nextWord(s):
         s = s.replace(s[ind], chr(ord(s[ind]) + 1), 1)
     return s
 
+def clear_unavailable():
+    global unavailable_names
+    unavailable_names.clear()
 

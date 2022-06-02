@@ -5,7 +5,7 @@
 from textx import metamodel_from_file
 from textx.export import metamodel_export, model_export
 from language.nodes import Expression, Abstraction, Application, Variable
-from language.alpha import alpha_conversion, unavailable_names
+from language.alpha import alpha_conversion, clear_unavailable
 from language.beta import beta_reduction, is_reduced, set_reduced
 import pydot_ng as pydot
 import os
@@ -40,6 +40,7 @@ def interpret(value, user):
         i = 0
         reduced = False
         evaluation_steps = []
+        clear_unavailable()
         while not reduced and i < MAX_ITERATIONS:
             evaluation_steps.append(model_to_string(input_model))
             nesto = beta_reduction(input_model)
@@ -50,7 +51,6 @@ def interpret(value, user):
             print_tree(nesto)
             input_model = nesto
             print()
-            unavailable_names.clear()
             reduced = not is_reduced()
             set_reduced(False)
             i += 1
