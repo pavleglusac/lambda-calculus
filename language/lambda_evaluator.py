@@ -7,13 +7,12 @@ from textx.export import metamodel_export, model_export
 from language.nodes import Expression, Abstraction, Application, Variable
 from language.alpha import alpha_conversion, unavailable_names
 from language.beta import beta_reduction, is_reduced, set_reduced
-import pydot
+import pydot_ng as pydot
 import os
 
 lambda_meta = metamodel_from_file('./language/lambda.tx', classes=[Expression, Abstraction, Application, Variable])
 metamodel_export(lambda_meta, 'metamodel.dot')
-graphs = pydot.graph_from_dot_file('metamodel.dot')
-graph = graphs[0]
+graph = pydot.graph_from_dot_file('metamodel.dot')
 graph.write_svg('./static/metamodel.svg')
 
 MAX_ITERATIONS = 100
@@ -62,8 +61,7 @@ def interpret(value, user):
 
 def save_model(path, model, user):
     model_export(model, './language/models/'+path+'.dot')
-    graphs = pydot.graph_from_dot_file('./language/models/'+path+'.dot')
-    graph = graphs[0]
+    graph = pydot.graph_from_dot_file('./language/models/'+path+'.dot')
     isExist = os.path.exists('./static/'+user)
     if not isExist:
         os.makedirs('./static/'+user)
