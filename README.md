@@ -1,4 +1,4 @@
-# Lambda Caluclus
+# Lambda Calculus
 
 A lambda calculus evaluator, written in Python.
 
