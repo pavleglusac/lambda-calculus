@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html style="min-height: 100%; height: 100%;">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Lambda calculus</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src='main.js'></script>
+    <style>
+    .form-rounded {
+        border-radius: 1rem;
+    }
+    .carousel-control-prev-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000000'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e");
+    }
+    .carousel-control-next-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000000'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e")
+    }
+    </style>
+</head>
+<body style="min-height: 100%; height: 100%;">
+    <div class="d-flex justify-content-center align-items-start shadow" style="min-height: 100%;">
+        
+        <div class="card d-flex flex-row shadow justify-content-center w-75 align-items-start h-75 mt-1 p-0 mb-5" >
+            
+            <div class="card-body d-flex flex-column justify-content-start w-75 mt-2 p-0">
+                <nav class="navbar w-100 navbar-expand-lg navbar-light">
+                    <a class="navbar-brand ms-4" href="#">Lambda calculus</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                  
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                          <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="about">About</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="examples">Examples</a>
+                        </li>
+                      </ul>
+                    </div>
+                </nav>
+                <div class="d-flex justify-content-center text-center mt-5">
+                    <img class="align-self-start" src="/static/lambda.png" style="width: 10vw;">
+                </div>
+                <form id="inputForm" class="w-100" action="{{ url_for('evaluate') }}" method="post">
+                    <div class="d-flex justify-content-center mb-3">
+                        <input type="text" id="expressionInput" name="expression" class="form-control form-rounded w-50" placeholder="Enter an expression">
+                    </div>
+                </form>
+                {% if err %}
+                    <div class="d-flex flex-column align-items-center mb-5">
+                        <p class="lead mb-1 text-danger">{{err}}</p>
+                    </div>
+                {% endif %}
+                <div class="d-flex flex-column align-items-center mb-5">
+                    {% for expression in expressions %}
+                        <p class="lead mb-1">{{expression}}</p>
+                    {% endfor %}
+                </div>
+                {% if expressions %}
+                    <div class="w-100 h-100 border-top">
+                        <div id="carouselExampleControls" class="carousel slide h-100" data-bs-ride="carousel" data-interval="false">
+                            <div class="carousel-inner text-center">
+                            {% for ind in range(expressions|length)%}
+                                <div class="carousel-item {% if ind == 0 %} active {% endif %}">
+                                    <p class="mb-2 mt-5 display-6">{{expressions[ind]}}</p>
+                                    <object class="svg mt-5"  data="/static/{{session['user_id']}}/model{{ind}}.svg"  style="height: 75vh;"></object>
+                                </div>
+                            {% endfor %}
+                            </div>
+                            <button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev" style="width: 5vw;">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next" style="width: 5vw;">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var input = document.getElementById('expressionInput');
+
+    input.addEventListener('keypress', function(event) {  
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        document.getElementById('inputForm').submit();
+    }
+}); 
+</script>
+</html>

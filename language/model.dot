@@ -1,0 +1,60 @@
+
+    digraph textX {
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    node[
+        shape=record,
+        style=filled,
+        fillcolor=aliceblue
+    ]
+    nodesep = 0.3
+    edge[dir=black,arrowtail=empty]
+
+
+2128885328304 -> 2128885328256 [label="left" arrowtail=diamond dir=both]
+2128885328256 -> 2128885328496 [label="parameter" arrowtail=diamond dir=both]
+2128885328496[label="{m:Variable|}"]
+2128885328256 -> 2128885328544 [label="expression" arrowtail=diamond dir=both]
+2128885328544 -> 2128885328640 [label="left" arrowtail=diamond dir=both]
+2128885328640 -> 2128885070096 [label="left" arrowtail=diamond dir=both]
+2128885070096[label="{m:Variable|}"]
+2128885328640 -> 2128885066256 [label="right" arrowtail=diamond dir=both]
+2128885066256 -> 2128885324608 [label="parameter" arrowtail=diamond dir=both]
+2128885324608[label="{t:Variable|}"]
+2128885066256 -> 2128885327488 [label="expression" arrowtail=diamond dir=both]
+2128885327488 -> 2128885326336 [label="parameter" arrowtail=diamond dir=both]
+2128885326336[label="{f:Variable|}"]
+2128885327488 -> 2128885326048 [label="expression" arrowtail=diamond dir=both]
+2128885326048[label="{t:Variable|}"]
+2128885327488[label="{:Abstraction|}"]
+2128885066256[label="{:Abstraction|}"]
+2128885328640[label="{:Application|}"]
+2128885328544 -> 2128885251760 [label="right" arrowtail=diamond dir=both]
+2128885251760 -> 2128885327440 [label="parameter" arrowtail=diamond dir=both]
+2128885327440[label="{x:Variable|}"]
+2128885251760 -> 2128885325376 [label="expression" arrowtail=diamond dir=both]
+2128885325376 -> 2128885325040 [label="parameter" arrowtail=diamond dir=both]
+2128885325040[label="{t:Variable|}"]
+2128885325376 -> 2128885327392 [label="expression" arrowtail=diamond dir=both]
+2128885327392 -> 2128885327344 [label="parameter" arrowtail=diamond dir=both]
+2128885327344[label="{f:Variable|}"]
+2128885327392 -> 2128885327296 [label="expression" arrowtail=diamond dir=both]
+2128885327296[label="{f:Variable|}"]
+2128885327392[label="{:Abstraction|}"]
+2128885325376[label="{:Abstraction|}"]
+2128885251760[label="{:Abstraction|}"]
+2128885328544[label="{:Application|}"]
+2128885328256[label="{:Abstraction|}"]
+2128885328304 -> 2128885328448 [label="right" arrowtail=diamond dir=both]
+2128885328448 -> 2128885327008 [label="parameter" arrowtail=diamond dir=both]
+2128885327008[label="{z:Variable|}"]
+2128885328448 -> 2128885324368 [label="expression" arrowtail=diamond dir=both]
+2128885324368 -> 2128885327248 [label="parameter" arrowtail=diamond dir=both]
+2128885327248[label="{s:Variable|}"]
+2128885324368 -> 2128885327200 [label="expression" arrowtail=diamond dir=both]
+2128885327200[label="{z:Variable|}"]
+2128885324368[label="{:Abstraction|}"]
+2128885328448[label="{:Abstraction|}"]
+2128885328304[label="{:Application|}"]
+
+}

@@ -1,0 +1,40 @@
+
+    digraph textX {
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    node[
+        shape=record,
+        style=filled,
+        fillcolor=aliceblue
+    ]
+    nodesep = 0.3
+    edge[dir=black,arrowtail=empty]
+
+
+2196313881808 -> 2196318707776 [label="left" arrowtail=diamond dir=both]
+2196318707776 -> 2196318707824 [label="parameter" arrowtail=diamond dir=both]
+2196318707824[label="{n:Variable|}"]
+2196318707776 -> 2196317842544 [label="expression" arrowtail=diamond dir=both]
+2196317842544 -> 2196317842592 [label="parameter" arrowtail=diamond dir=both]
+2196317842592[label="{o:Variable|}"]
+2196317842544 -> 2196317842448 [label="expression" arrowtail=diamond dir=both]
+2196317842448 -> 2196317842496 [label="parameter" arrowtail=diamond dir=both]
+2196317842496[label="{p:Variable|}"]
+2196317842448 -> 2196317842208 [label="expression" arrowtail=diamond dir=both]
+2196317842208[label="{o:Variable|}"]
+2196317842448[label="{:Abstraction|}"]
+2196317842544[label="{:Abstraction|}"]
+2196318707776[label="{:Abstraction|}"]
+2196313881808 -> 2196318589088 [label="right" arrowtail=diamond dir=both]
+2196318589088 -> 2196318589136 [label="parameter" arrowtail=diamond dir=both]
+2196318589136[label="{x:Variable|}"]
+2196318589088 -> 2196318763616 [label="expression" arrowtail=diamond dir=both]
+2196318763616 -> 2196318763184 [label="parameter" arrowtail=diamond dir=both]
+2196318763184[label="{y:Variable|}"]
+2196318763616 -> 2196318763136 [label="expression" arrowtail=diamond dir=both]
+2196318763136[label="{y:Variable|}"]
+2196318763616[label="{:Abstraction|}"]
+2196318589088[label="{:Abstraction|}"]
+2196313881808[label="{:Application|}"]
+
+}

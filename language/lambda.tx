@@ -1,0 +1,16 @@
+Expression:
+    Abstraction | Variable | Application
+;
+
+Variable:
+    name=ID
+;
+
+Abstraction:
+    'λ' parameter=Variable '.' expression=Expression
+;
+
+
+Application:
+    '(' left=Expression right=Expression ')'
+;

@@ -1,0 +1,32 @@
+
+    digraph textX {
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    node[
+        shape=record,
+        style=filled,
+        fillcolor=aliceblue
+    ]
+    nodesep = 0.3
+    edge[dir=black,arrowtail=empty]
+
+
+2358446948304 -> 2358444581760 [label="left" arrowtail=diamond dir=both]
+2358444581760 -> 2358444581808 [label="left" arrowtail=diamond dir=both]
+2358444581808 -> 2358444581856 [label="parameter" arrowtail=diamond dir=both]
+2358444581856[label="{a:Variable|}"]
+2358444581808 -> 2358444581904 [label="expression" arrowtail=diamond dir=both]
+2358444581904 -> 2358444581424 [label="parameter" arrowtail=diamond dir=both]
+2358444581424[label="{b:Variable|}"]
+2358444581904 -> 2358444581664 [label="expression" arrowtail=diamond dir=both]
+2358444581664[label="{a:Variable|}"]
+2358444581904[label="{:Abstraction|}"]
+2358444581808[label="{:Abstraction|}"]
+2358444581760 -> 2358445652816 [label="right" arrowtail=diamond dir=both]
+2358445652816[label="{p1:Variable|}"]
+2358444581760[label="{:Application|}"]
+2358446948304 -> 2358446948256 [label="right" arrowtail=diamond dir=both]
+2358446948256[label="{p2:Variable|}"]
+2358446948304[label="{:Application|}"]
+
+}
