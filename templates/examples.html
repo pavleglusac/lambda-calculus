@@ -23,29 +23,24 @@
         <div class="card d-flex flex-row shadow justify-content-center w-75 align-items-start h-75 mt-1 p-0" >
             
             <div class="card-body d-flex flex-column justify-content-start w-75 mt-2 p-0 mb-5">
-                <nav class="navbar w-100 navbar-expand-lg navbar-light">
-                    <a class="navbar-brand ms-4" href="#">Lambda calculus</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon"></span>
-                    </button>
-                  
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                      <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                          <a class="nav-link" href="/">Home</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="about">About</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="examples">Examples</a>
-                        </li>
-                      </ul>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container-fluid">
+                        <a class="navbar-brand ms-4" href="#">Lambda calculus</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                            <div class="navbar-nav" style="vertical-align: middle;">
+                                <a class="nav-link" href="/" >Home</a>
+                                <a class="nav-link" href="about">About</a>
+                                <a class="nav-link" href="examples">Examples</a>
+                            </div>
+                      </div>
                     </div>
                 </nav>
                 
-                <div class="d-flex flex-column align-items-lg-start text-center mt-3 ms-4 mb-5">
-                    <div class="d-flex flex-column align-items-lg-start text-center mt-3 ms-4 mb-5 border-bottom" style="width: 67vw;">
+                <div class="d-flex flex-column align-items-lg-start text-center mt-3 ms-md-4 mb-5">
+                    <div class="d-flex flex-column align-items-lg-start text-center mt-3 ms-md-4 mb-5 border-bottom" style="width: 67vw;">
                         <h3>Identity function</h3>
                         <br />
                         <h5>Abstraction:</h5>
@@ -54,7 +49,7 @@
                         <p class="lead align-self-center">(λx.x a) => a</p>
                     </div>
                     
-                    <div class="d-flex flex-column align-items-lg-start text-center mt-3 ms-4 mb-5 border-bottom" style="width: 67vw;">
+                    <div class="d-flex flex-column align-items-lg-start text-center mt-3 ms-md-4 mb-5 border-bottom" style="width: 67vw;">
                         <h3>Selection (first)</h3>
                         <br />
                         <h5>Abstraction:</h5>
@@ -63,7 +58,7 @@
                         <p class="lead align-self-center">((λx.λy.x a) b) => a</p>
                     </div>
 
-                    <div class="d-flex flex-column align-items-lg-start text-center mt-3 ms-4 mb-5 border-bottom" style="width: 67vw;">
+                    <div class="d-flex flex-column align-items-lg-start text-center mt-3 ms-md-4 mb-5 border-bottom" style="width: 67vw;">
                         <h3>Self-application</h3>
                         <br />
                         <h5>Abstraction:</h5>
@@ -72,7 +67,7 @@
                         <p class="lead align-self-center">(λx.(x x) λx.x) => (λx.x)</p>
                     </div>
 
-                    <div class="d-flex flex-column align-items-lg-start text-center mt-3 ms-4 mb-5 border-bottom" style="width: 67vw;">
+                    <div class="d-flex flex-column align-items-lg-start text-center mt-3 ms-md-4 mb-5 border-bottom" style="width: 67vw;">
                         <h3>Composition</h3>
                         <br />
                         <h5>Abstraction:</h5>
@@ -81,7 +76,7 @@
                         <p class="lead align-self-center">((((λg. λf. λx.(g (f x)) λx.x) λa.λb.a) p1) p2) => p1</p>
                     </div>
                     
-                    <div class="d-flex flex-column align-items-lg-start text-center mt-3 ms-4 mb-5 border-bottom" style="width: 67vw;">
+                    <div class="d-flex flex-column align-items-lg-start text-center mt-3 ms-md-4 mb-5 border-bottom" style="width: 67vw;">
                         <h3>OR</h3>
                         <br />
                         <h5>Abstraction:</h5>
@@ -90,7 +85,7 @@
                         <p class="lead align-self-center">((or T) F) => T</p>
                     </div>
 
-                    <div class="d-flex flex-column align-items-lg-start text-center mt-3 ms-4 mb-5 border-bottom" style="width: 67vw;">
+                    <div class="d-flex flex-column align-items-lg-start text-center mt-3 ms-md-4 mb-5 border-bottom" style="width: 67vw;">
                         <h3>AND</h3>
                         <br />
                         <h5>Abstraction:</h5>
@@ -99,7 +94,7 @@
                         <p class="lead align-self-center">((and T) F) => F</p>
                     </div>
 
-                    <div class="d-flex flex-column align-items-lg-start text-center mt-3 ms-4 mb-5 border-bottom" style="width: 67vw;">
+                    <div class="d-flex flex-column align-items-lg-start text-center mt-3 ms-md-4 mb-5 border-bottom" style="width: 67vw;">
                         <h3>NOT</h3>
                         <br />
                         <h5>Abstraction:</h5>
@@ -108,7 +103,7 @@
                         <p class="lead align-self-center">(not T) => F</p>
                     </div>
 
-                    <div class="d-flex flex-column align-items-lg-start text-center mt-3 ms-4 mb-5 border-bottom" style="width: 67vw;">
+                    <div class="d-flex flex-column align-items-lg-start text-center mt-3 ms-md-4 mb-5 border-bottom" style="width: 67vw;">
                         <h3>α-conversion examples</h3>
                         <br />
                         <h5></h5>
