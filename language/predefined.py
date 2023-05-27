@@ -1,8 +1,15 @@
-predefined_expressions = {
+named_expressions = {
     'T': 'λx.λy.x',
     'F': 'λx.λy.y',
     'or': 'λp.λq.((p p) q)',
     'and': 'λp.λq.((p q) p)',
     'not': 'λp.((p λx.λy.y) λa.λb.a)',
-
+    'plus': 'λm.λn.λf.λx.((m f) ((n f) x))',
+    'succ': 'λn.λf.λx.(f ((n f) x))',
+    'zero': 'λf.λx.x',
+    'one': 'λf.λx.(f x)',
+    'two': 'λf.λx.(f (f x))',
+    'three': 'λf.λx.(f (f (f x)))',
+    'four': 'λf.λx.(f (f (f (f x))))',
+    'five': 'λf.λx.(f (f (f (f (f x)))))',
 }

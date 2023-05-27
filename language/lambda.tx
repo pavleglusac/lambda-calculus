@@ -1,9 +1,17 @@
+Statement:
+    Assignment | Expression
+;
+
+Assignment:
+    'let ' (name=INT | name=ID) '=' expression=Expression 
+;
+
 Expression:
     Abstraction | Variable | Application
 ;
 
 Variable:
-    name=ID
+    (name=INT | name=ID)
 ;
 
 Abstraction:

@@ -3,7 +3,7 @@ from language.variables import free_variables, bound_variables
 from language.nodes import Abstraction, Application, Variable, Expression
 from textx import metamodel_from_file
 from textx.export import metamodel_export, model_export
-from language.predefined import predefined_expressions
+from language.predefined import named_expressions
 
 
 unavailable_names = set()
@@ -15,10 +15,9 @@ def alpha_conversion_abstraction(node: Abstraction, to_convert, converted):
     abstraction = Abstraction()
     print("ALPHA CONVERSION ABSTRACTION")
     print(node.parameter, node.expression, to_convert, converted)
-    bounds = bound_variables(converted)
-    if node.parameter.name in free_variables(converted) | bound_variables(converted) | bounds:
-        unavailable_names = (unavailable_names | free_variables(node) | {node.parameter.name} | bounds)
-        changed_name = generate_next_variable_name(unavailable_names)
+    unavailable_names = unavailable_names | free_variables(converted) | bound_variables(converted)
+    if node.parameter.name in unavailable_names:
+        changed_name = generate_next_variable_name(unavailable_names | {node.parameter.name})
         changed_parameter = Variable()
         changed_parameter.name = changed_name
         abstraction.parameter = changed_parameter
@@ -34,7 +33,7 @@ def alpha_conversion_abstraction(node: Abstraction, to_convert, converted):
     return abstraction
 
 def alpha_conversion_variable(node: Variable, to_convert, converted):
-    print("ALPHA CONVERSION VARIABLE")
+    # print("ALPHA CONVERSION VARIABLE")
     if type(to_convert) is Variable:
         if node.name == to_convert.name:
             return converted
@@ -43,7 +42,7 @@ def alpha_conversion_variable(node: Variable, to_convert, converted):
     return variable
 
 def alpha_conversion_application(node: Application, to_convert, converted):
-    print("ALPHA CONVERSION APPLICATION")
+    # print("ALPHA CONVERSION APPLICATION")
     application = Application()
     application.left = alpha_conversion(node.left, to_convert, converted)
     application.right = alpha_conversion(node.right, to_convert, converted)
@@ -60,7 +59,8 @@ def alpha_conversion(node, to_convert, converted):
 
 def generate_next_variable_name(unavailable_names):
     word = "a"
-    while True:
+    MAXIMUM_NAMES_LIMIT = 10_000_000
+    for _ in range(MAXIMUM_NAMES_LIMIT):
         if word in unavailable_names:
             word = nextWord(word)
         else:
@@ -68,17 +68,12 @@ def generate_next_variable_name(unavailable_names):
 
 def nextWord(s):
     if s == " ":
-        return "a"
-
-    ind = -1
-    for i, c in enumerate(s):
-        if c != 'z':
-            ind = i
-            break
+        return "a"    
+    ind = next((i for i, c in enumerate(s) if c != 'z'), -1)
     if ind == -1:
-        s = s + 'a'
+        s += 'a'
     else:
-        s = s.replace(s[ind], chr(ord(s[ind]) + 1), 1)
+        s = s[:ind] + chr(ord(s[ind]) + 1) + s[ind+1:]
     return s
 
 def clear_unavailable():

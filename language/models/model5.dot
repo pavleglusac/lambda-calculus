@@ -11,14 +11,14 @@
     edge[dir=black,arrowtail=empty]
 
 
-2358446067664 -> 2358446068048 [label="left" arrowtail=diamond dir=both]
-2358446068048 -> 2358446068432 [label="parameter" arrowtail=diamond dir=both]
-2358446068432[label="{b:Variable|}"]
-2358446068048 -> 2358445652816 [label="expression" arrowtail=diamond dir=both]
-2358445652816[label="{p1:Variable|}"]
-2358446068048[label="{:Abstraction|}"]
-2358446067664 -> 2358446068480 [label="right" arrowtail=diamond dir=both]
-2358446068480[label="{p2:Variable|}"]
-2358446067664[label="{:Application|}"]
+2133899157832 -> 2133909192008 [label="left" arrowtail=diamond dir=both]
+2133909192008 -> 2133910294728 [label="parameter" arrowtail=diamond dir=both]
+2133910294728[label="{j:Variable|}"]
+2133909192008 -> 2133909556616 [label="expression" arrowtail=diamond dir=both]
+2133909556616[label="{p1:Variable|}"]
+2133909192008[label="{:Abstraction|}"]
+2133899157832 -> 2133910699400 [label="right" arrowtail=diamond dir=both]
+2133910699400[label="{p2:Variable|}"]
+2133899157832[label="{:Application|}"]
 
 }

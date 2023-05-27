@@ -13,7 +13,7 @@ class Abstraction(Expression):
 class Variable(Expression):
     def __init__(self, parent=None, name=''):
         self.parent = parent
-        self.name = name
+        self.name = str(name)
 
     def __repr__(self):
         return self.name
@@ -26,3 +26,13 @@ class Application(Expression):
 
     def __repr__(self):
         return '(' + repr(self.left) + ' ' + repr(self.right) + ')'
+
+
+class Assignment:
+    def __init__(self, name=None, expression=None, parent=None):
+        self.parent = parent
+        self.name = str(name)
+        self.expression = expression
+
+    def __repr__(self):
+        return 'let ' + str(self.name) + ' = ' + repr(self.expression)

@@ -1,0 +1,36 @@
+
+    digraph textX {
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    node[
+        shape=record,
+        style=filled,
+        fillcolor=aliceblue
+    ]
+    nodesep = 0.3
+    edge[dir=black,arrowtail=empty]
+
+
+1738908435784 -> 1738908055880 [label="parameter" arrowtail=diamond dir=both]
+1738908055880[label="{a:Variable|}"]
+1738908435784 -> 1738908723464 [label="expression" arrowtail=diamond dir=both]
+1738908723464 -> 1738905282376 [label="parameter" arrowtail=diamond dir=both]
+1738905282376[label="{a:Variable|}"]
+1738908723464 -> 1738907776840 [label="expression" arrowtail=diamond dir=both]
+1738907776840 -> 1738908175304 [label="left" arrowtail=diamond dir=both]
+1738908175304 -> 1738907239240 [label="left" arrowtail=diamond dir=both]
+1738907239240[label="{a:Variable|}"]
+1738908175304 -> 1738907133448 [label="right" arrowtail=diamond dir=both]
+1738907133448[label="{a:Variable|}"]
+1738908175304[label="{:Application|}"]
+1738907776840 -> 1738907133000 [label="right" arrowtail=diamond dir=both]
+1738907133000 -> 1738908003528 [label="left" arrowtail=diamond dir=both]
+1738908003528[label="{a:Variable|}"]
+1738907133000 -> 1738907133960 [label="right" arrowtail=diamond dir=both]
+1738907133960[label="{a:Variable|}"]
+1738907133000[label="{:Application|}"]
+1738907776840[label="{:Application|}"]
+1738908723464[label="{:Abstraction|}"]
+1738908435784[label="{:Abstraction|}"]
+
+}
